@@ -186,7 +186,7 @@ class _RegistrationState extends State<Registration> {
                                 ).show(context);
                               }
                             },
-                            bcolor: HexColor('#e7d4d3'),
+                            bcolor: AppConst.primary,
                             borderRadius: 20,
                             textColor: Colors.black,
                           ),

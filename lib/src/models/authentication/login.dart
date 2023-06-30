@@ -162,7 +162,7 @@ class _LoginState extends State<Login> {
                                 ).show(context);
                               }
                             },
-                            bcolor: HexColor('#e7d4d3'),
+                            bcolor: AppConst.primary,
                             borderRadius: 20,
                             textColor: Colors.black,
                           ),
