@@ -9,7 +9,6 @@ import 'package:cers/src/widgets/app_text.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
-import 'package:url_launcher/url_launcher.dart';
 
 class Add extends StatefulWidget {
   const Add({super.key});
