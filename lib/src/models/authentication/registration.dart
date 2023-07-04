@@ -193,7 +193,8 @@ class _RegistrationState extends State<Registration> {
                                     email.text,
                                     password.text,
                                     fullname.text,
-                                    phone.text, roleValue);
+                                    phone.text,
+                                    roleValue);
                                 AppSnackbar(
                                   isError: false,
                                   response: response.toString(),
