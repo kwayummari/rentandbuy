@@ -13,6 +13,25 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  Future getValidationData() async {
+    final SharedPreferences sharedPreferences =
+        await SharedPreferences.getInstance();
+    var e = sharedPreferences.get('email');
+    var r = sharedPreferences.get('role');
+    setState(() {
+      email = e;
+      role = r;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getValidationData();
+  }
+
+  var email;
+  var role;
   @override
   Widget build(BuildContext context) {
     return AppBaseScreen(
@@ -65,7 +84,7 @@ class _ProfileState extends State<Profile> {
                 color: AppConst.black,
               ),
               title: AppText(
-                txt: 'johndoe@gmail.com',
+                txt: email,
                 size: 15,
                 color: AppConst.black,
               ),
