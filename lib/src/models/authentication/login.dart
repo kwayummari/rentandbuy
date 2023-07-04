@@ -77,7 +77,7 @@ class _LoginState extends State<Login> {
                               label: 'Email',
                               obscure: false,
                               isemail: true,
-                              fillcolor: HexColor('e7d4d3'),
+                              fillcolor: AppConst.secondary,
                             )),
                         AppContainer(
                             width: 340,
@@ -98,7 +98,7 @@ class _LoginState extends State<Login> {
                                   }),
                                   icon: Icon(Icons.remove_red_eye)),
                               isemail: false,
-                              fillcolor: HexColor('e7d4d3'),
+                              fillcolor: AppConst.secondary,
                             )),
                         Padding(
                           padding: const EdgeInsets.only(left: 150),

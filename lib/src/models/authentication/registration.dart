@@ -1,7 +1,6 @@
 import 'package:cers/src/utils/app_const.dart';
 import 'package:cers/src/widgets/app_dropdown.dart';
 import 'package:flutter/material.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:cers/routes/route-names.dart';
 import 'package:cers/src/service/registration.dart';
 import 'package:cers/src/widgets/app_base_screen.dart';
