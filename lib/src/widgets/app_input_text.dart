@@ -43,13 +43,10 @@ class AppInputText extends StatelessWidget {
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(20.0),
           ),
-          label: Container(
-            color: labelColor ?? HexColor('#e7d4d3'),
-            child: AppText(
-              txt: label,
-              size: 15,
-              color: Colors.black,
-            ),
+          label: AppText(
+            txt: label,
+            size: 15,
+            color: Colors.black,
           ),
           filled: true,
           fillColor: fillcolor,

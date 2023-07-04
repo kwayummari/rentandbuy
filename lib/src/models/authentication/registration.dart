@@ -1,4 +1,5 @@
 import 'package:cers/src/utils/app_const.dart';
+import 'package:cers/src/widgets/app_dropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:cers/routes/route-names.dart';
@@ -25,6 +26,7 @@ class _RegistrationState extends State<Registration> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController rpassword = TextEditingController();
+  var role, roleValue;
   bool dont_show_password = true;
   final _formKey = GlobalKey<FormState>();
   @override
@@ -78,7 +80,7 @@ class _RegistrationState extends State<Registration> {
                               label: 'Full Name',
                               obscure: false,
                               isemail: false,
-                              fillcolor: HexColor('e7d4d3'),
+                              fillcolor: AppConst.secondary,
                             )),
                         AppContainer(
                             width: 340,
@@ -92,7 +94,7 @@ class _RegistrationState extends State<Registration> {
                               label: 'Email',
                               obscure: false,
                               isemail: true,
-                              fillcolor: HexColor('e7d4d3'),
+                              fillcolor: AppConst.secondary,
                             )),
                         AppContainer(
                             width: 340,
@@ -106,7 +108,7 @@ class _RegistrationState extends State<Registration> {
                               label: 'Phone',
                               obscure: false,
                               isemail: false,
-                              fillcolor: HexColor('e7d4d3'),
+                              fillcolor: AppConst.secondary,
                             )),
                         AppContainer(
                             width: 340,
@@ -127,7 +129,7 @@ class _RegistrationState extends State<Registration> {
                                   }),
                                   icon: Icon(Icons.remove_red_eye)),
                               isemail: false,
-                              fillcolor: HexColor('e7d4d3'),
+                              fillcolor: AppConst.secondary,
                             )),
                         AppContainer(
                             width: 340,
@@ -155,8 +157,31 @@ class _RegistrationState extends State<Registration> {
                                   }),
                                   icon: Icon(Icons.remove_red_eye)),
                               isemail: false,
-                              fillcolor: HexColor('e7d4d3'),
+                              fillcolor: AppConst.secondary,
                             )),
+                        AppContainer(
+                          width: 340,
+                          bottom: 24,
+                          child: AppDropdownTextFormField(
+                            labelText: 'Select Role',
+                            onChanged: (newValue) {
+                              setState(() {
+                                role = newValue;
+                              });
+                              if (role == 'Owner') {
+                                setState(() {
+                                  roleValue = '0'.toString();
+                                });
+                              } else {
+                                setState(() {
+                                  roleValue = '1'.toString();
+                                });
+                              }
+                            },
+                            options: ['Select', 'Owner', 'Renter'],
+                            value: role ?? 'Select',
+                          ),
+                        ),
                         AppContainer(
                           width: 140,
                           bottom: 24,
