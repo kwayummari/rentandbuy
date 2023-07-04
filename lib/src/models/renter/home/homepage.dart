@@ -44,6 +44,12 @@ class _HomepageState extends State<Homepage> {
     ).show(context);
   }
 
+  String extractUsernameFromEmail(String email) {
+    int atIndex = email.indexOf("@");
+    String username = email.substring(0, atIndex);
+    return username;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,7 +86,8 @@ class _HomepageState extends State<Homepage> {
                               color: Color.fromARGB(255, 179, 93, 23),
                             )),
                         AppText(
-                          txt: 'UserX',
+                          txt: extractUsernameFromEmail(
+                              found[index]['email'].toString()),
                           color: Colors.black,
                           size: 15,
                           weight: FontWeight.w500,
