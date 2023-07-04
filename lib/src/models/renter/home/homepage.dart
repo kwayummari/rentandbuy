@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:cers/src/models/owner/view/viewRenter.dart';
 import 'package:cers/src/service/inquiry.dart';
 import 'package:cers/src/service/lost.dart';
 import 'package:cers/src/widgets/app_button.dart';
@@ -35,14 +36,7 @@ class _HomepageState extends State<Homepage> {
     });
   }
 
-  Future addInquirys(id, ownerEmail) async {
-    final addInquiry _foundService = await addInquiry();
-    final response = await _foundService.add(context, id, ownerEmail);
-    AppSnackbar(
-      isError: response.toString() == 'success' ? false : true,
-      response: response.toString(),
-    ).show(context);
-  }
+  
 
   String extractUsernameFromEmail(String email) {
     int atIndex = email.indexOf("@");
@@ -125,10 +119,13 @@ class _HomepageState extends State<Homepage> {
                             )),
                         Spacer(),
                         AppButton(
-                            onPress: () => addInquirys(
-                                found[index]['id'].toString(),
-                                found[index]['email']),
-                            label: 'Make Inquiry',
+                            onPress: () => Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (context) => view(
+                                      description: found[index]['description'],
+                                      image: found[index]['image'], name: found[index]['caption'], 
+                                      price: found[index]['price'], email: found[index]['email'], id: found[index]['id'], ))), 
+                            label: 'View Details',
                             borderRadius: 5,
                             textColor: AppConst.secondary,
                             bcolor: AppConst.primary),

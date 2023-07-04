@@ -1,9 +1,12 @@
 // ignore_for_file: must_be_immutable, prefer_typing_uninitialized_variables, non_constant_identifier_names, duplicate_ignore, prefer_const_constructors, body_might_complete_normally_nullable, prefer_if_null_operators, no_leading_underscores_for_local_identifiers, unused_element, avoid_print, unused_label
 
 import 'package:cers/animations/animations.dart';
+import 'package:cers/src/service/inquiry.dart';
+import 'package:cers/src/service/lost.dart';
 import 'package:cers/src/utils/app_const.dart';
 import 'package:cers/src/widgets/app_button.dart';
 import 'package:cers/src/widgets/app_image_network.dart';
+import 'package:cers/src/widgets/app_snackbar.dart';
 import 'package:cers/src/widgets/app_text.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -13,9 +16,13 @@ class view extends StatefulWidget {
   var description;
   var price;
   var image;
+  var id;
+  var email;
   // ignore: non_constant_identifier_names
   view({
     Key? key,
+    required this.id,
+    required this.email,
     required this.name,
     required this.description,
     required this.price,
@@ -27,6 +34,15 @@ class view extends StatefulWidget {
 }
 
 class _viewState extends State<view> {
+  Future addInquirys(id, ownerEmail) async {
+    final addInquiry _foundService = await addInquiry();
+    final response = await _foundService.add(context, id, ownerEmail);
+    AppSnackbar(
+      isError: response.toString() == 'success' ? false : true,
+      response: response.toString(),
+    ).show(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
@@ -150,7 +166,8 @@ class _viewState extends State<view> {
                         height: 50,
                         width: 340,
                         child: AppButton(
-                          onPress: () => null,
+                          onPress: () => addInquirys(
+                              widget.id.toString(), widget.email.toString()),
                           label: 'Rent',
                           bcolor: AppConst.primary,
                           borderRadius: 20,
