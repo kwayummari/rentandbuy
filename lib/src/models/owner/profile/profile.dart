@@ -4,6 +4,7 @@ import 'package:cers/src/widgets/app_base_screen.dart';
 import 'package:cers/src/widgets/app_text.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:cers/src/service/profile.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -13,14 +14,18 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  var profileData;
   Future getValidationData() async {
     final SharedPreferences sharedPreferences =
         await SharedPreferences.getInstance();
+    final profileService profile = await profileService();
     var e = sharedPreferences.get('email');
     var r = sharedPreferences.get('role');
+    final profileData = await profile.profile(context, e.toString());
     setState(() {
       email = e;
       role = r;
+      this.profileData = profileData;
     });
   }
 
@@ -94,11 +99,29 @@ class _ProfileState extends State<Profile> {
             ),
             ListTile(
               leading: Icon(
+                Icons.person,
+                color: AppConst.black,
+              ),
+              title: AppText(
+                txt: profileData != null
+                    ? profileData[0]['fullname']
+                    : 'loading...',
+                size: 15,
+                color: AppConst.black,
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            ListTile(
+              leading: Icon(
                 Icons.phone,
                 color: AppConst.black,
               ),
               title: AppText(
-                txt: '+255 762 996305',
+                txt: profileData != null
+                    ? profileData[0]['phone']
+                    : 'loading...',
                 size: 15,
                 color: AppConst.black,
               ),
