@@ -12,6 +12,8 @@ class dataService {
   Future add(
     BuildContext context,
     String caption,
+    String description,
+    String price,
     File? _imageFile,
   ) async {
     final SharedPreferences sharedPreferences =
@@ -20,6 +22,8 @@ class dataService {
     final uri = Uri.parse("$baseUrl/lost/create.php");
     var request = http.MultipartRequest('POST', uri);
     request.fields['caption'] = caption.toString();
+    request.fields['description'] = description.toString();
+    request.fields['price'] = price.toString();
     request.fields['email'] = email.toString();
     var pic = await http.MultipartFile.fromPath("image", _imageFile!.path);
     request.files.add(pic);

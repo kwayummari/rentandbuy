@@ -27,6 +27,8 @@ class _AddState extends State<Add> {
   final dataService _apiService = dataService();
   final _formKey = GlobalKey<FormState>();
   TextEditingController caption = TextEditingController();
+  TextEditingController description = TextEditingController();
+  TextEditingController price = TextEditingController();
   var category;
   File? _imageFile;
 
@@ -100,6 +102,27 @@ class _AddState extends State<Add> {
                     header: 'Caption',
                     hint: 'I have lost ---',
                     obscure: false),
+                AppInputText(
+                    textfieldcontroller: caption,
+                    isemail: false,
+                    fillcolor: AppConst.secondary,
+                    header: 'Caption',
+                    hint: 'Name',
+                    obscure: false),
+                AppInputText(
+                    textfieldcontroller: description,
+                    isemail: false,
+                    fillcolor: AppConst.secondary,
+                    header: 'Caption',
+                    hint: 'Description',
+                    obscure: false),
+                AppInputText(
+                    textfieldcontroller: price,
+                    isemail: false,
+                    fillcolor: AppConst.secondary,
+                    header: 'Caption',
+                    hint: 'Price /hr',
+                    obscure: false),
                 SizedBox(
                   height: 20,
                 ),
@@ -111,7 +134,11 @@ class _AddState extends State<Add> {
                         try {
                           if (_imageFile != null) {
                             final response = await _apiService.add(
-                                context, caption.text.toString(), _imageFile);
+                                context,
+                                caption.text.toString(),
+                                description.text.toString(),
+                                price.text.toString(),
+                                _imageFile);
                             AppSnackbar(
                               isError: response.toString() == 'success'
                                   ? false
