@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:cers/routes/route-names.dart';
+import 'package:cers/src/models/owner/view/view.dart';
 import 'package:cers/src/service/lost.dart';
+import 'package:cers/src/widgets/app_button.dart';
 import 'package:cers/src/widgets/app_image_network.dart';
 import 'package:flutter/material.dart';
 import 'package:cers/src/utils/app_const.dart';
@@ -118,9 +120,10 @@ class _HomepageState extends State<Homepage> {
                               Icons.share_rounded,
                               color: AppConst.primary,
                             )),
-                        SizedBox(
-                          width: 10,
-                        )
+                        Spacer(),
+                        AppButton(onPress: () =>Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (context) => view(description: found[index]['description'], image: found[index]['image'], name: found[index]['caption'], price: found[index]['price'],))), label: 'View More', borderRadius: 20, textColor: AppConst.secondary, bcolor: AppConst.primary),
                       ]),
                     ),
                     Padding(

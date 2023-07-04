@@ -8,13 +8,13 @@ import 'package:cers/src/widgets/app_text.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-class Viewtopcircularcategory extends StatefulWidget {
+class view extends StatefulWidget {
   var name;
   var description;
   var price;
   var image;
   // ignore: non_constant_identifier_names
-  Viewtopcircularcategory(
+  view(
       {Key? key,
       required this.name,
       required this.description,
@@ -23,11 +23,11 @@ class Viewtopcircularcategory extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<Viewtopcircularcategory> createState() =>
-      _ViewtopcircularcategoryState();
+  State<view> createState() =>
+      _viewState();
 }
 
-class _ViewtopcircularcategoryState extends State<Viewtopcircularcategory> {
+class _viewState extends State<view> {
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
