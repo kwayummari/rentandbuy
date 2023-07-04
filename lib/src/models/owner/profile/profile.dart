@@ -35,11 +35,10 @@ class _ProfileState extends State<Profile> {
               child: CircleAvatar(
                 backgroundColor: AppConst.primary,
                 radius: 70,
-                child: AppText(
-                  txt: 'JD',
-                  size: 70,
-                  weight: FontWeight.bold,
-                  color: AppConst.secondary,
+                child: Icon(
+                  Icons.person,
+                  color: AppConst.black,
+                  size: 100,
                 ),
               ),
             ),
